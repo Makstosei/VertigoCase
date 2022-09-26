@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using DG.Tweening;
-
+using TMPro;
 public class InteractionController : MonoBehaviour
 {
     [SerializeField] private GameObject _ui_canvas;
@@ -49,15 +48,9 @@ public class InteractionController : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.isPressed)
+        if (Input.GetMouseButtonDown(0))
         {
-            _clickData.position = Mouse.current.position.ReadValue();
-            _clickResults.Clear();
-            _ui_raycasyer.Raycast(_clickData, _clickResults);
-        }
-        else if (Input.touchCount > 0)
-        {
-            _clickData.position = Input.GetTouch(0).position;
+            _clickData.position = Input.mousePosition;
             _clickResults.Clear();
             _ui_raycasyer.Raycast(_clickData, _clickResults);
         }
@@ -72,7 +65,6 @@ public class InteractionController : MonoBehaviour
         foreach (var result in _clickResults)
         {
             GameObject ui_element = result.gameObject;
-            Debug.Log(ui_element.name);
             if (ui_element == _spinbutton && !_isSpinStarted)
             {
                 _isRoundStarted = true;

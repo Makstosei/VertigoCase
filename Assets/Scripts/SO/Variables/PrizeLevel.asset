@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dd3b0e6209bb446907e80a370bf60b, type: 3}
   m_Name: PrizeLevel
   m_EditorClassIdentifier: 
-  value: 11
+  value: 1
   initialValue: 1
